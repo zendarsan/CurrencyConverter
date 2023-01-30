@@ -49,7 +49,7 @@ async def convert(amount:float, from_currency:str, to_currency:str, db: Session 
     converted_dt = datetime.fromtimestamp(converted_time)
     crud.create_conversion(db, { 
             'converted_amount': to_amount,
-            'rate': to_rate,
+            'rate': to_rate/from_rate,
             "time_of_conversion": converted_dt,
             "from_currency": from_currency,
             "to_currency": to_currency
